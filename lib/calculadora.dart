@@ -21,7 +21,12 @@ class _CalculadoraState extends State<Calculadora> {
           _resultado = '';
         } else if (valor == '=') {
           _calcularResultado();
-        } else {
+        } else if (valor == 'apagar') {
+          if (_expressao.isNotEmpty) {
+        _expressao = _expressao.substring(0, _expressao.length - 1);
+      }
+        }
+        else {
           _expressao += valor;
         }
       },
@@ -54,6 +59,7 @@ class _CalculadoraState extends State<Calculadora> {
       onPressed: () => _pressionarBotao(valor),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +106,8 @@ class _CalculadoraState extends State<Calculadora> {
           child: Row(
             children: [
               _botao(_limpar),
-              TextButton(
-                onPressed: () {},
-                child: (Text('Limpar')),
+              IconButton(onPressed: () => _pressionarBotao('apagar'),
+               icon: Icon(Icons.backspace),
               )
             ],
           ),
