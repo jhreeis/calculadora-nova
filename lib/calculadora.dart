@@ -98,8 +98,13 @@ class _CalculadoraState extends State<Calculadora> {
         ),
         Expanded(
           child: Row(
-            children: [_botao(_limpar)],
-            
+            children: [
+              _botao(_limpar),
+              TextButton(
+                onPressed: () {},
+                child: (Text('Limpar')),
+              )
+            ],
           ),
         )
       ],
