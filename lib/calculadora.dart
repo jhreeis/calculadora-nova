@@ -96,7 +96,12 @@ class _CalculadoraState extends State<Calculadora> {
             ],
           ),
         ),
-        Expanded(child: _botao(_limpar))
+        Expanded(
+          child: Row(
+            children: [_botao(_limpar)],
+            
+          ),
+        )
       ],
     );
   }
