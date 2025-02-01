@@ -1,125 +1,91 @@
 import 'package:flutter/material.dart';
 import 'calculadora.dart';
 
-
 void main() {
-  runApp(const MeuPrimeiroPrograma());
+  runApp(const App());
 }
 
-class MeuPrimeiroPrograma extends StatelessWidget {
-  const MeuPrimeiroPrograma({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'appCalculadora',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Calculadora'),
+      home: const HomePage(title: 'Calculadora'),
     );
   }
 }
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+
+class HomePage extends StatefulWidget {
+  const HomePage({
+    super.key,
+    required this.title,
+  });
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  void _incrementCounter() {
-    setState(() {});
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          )
-        ],
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Expanded(
-              child: Container(
-                alignment: Alignment.center,
-                // color: Colors.amber,
-                // child: const Text(
-                // 'Lupionópolis',
-              ),
+              flex: 1,
+              child: Container(),
             ),
             Expanded(
-              flex: 7,
+              flex: 28,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      // color: Colors.blue,
-                      // child: const Text('Primeira coluna'),
-                    ),
+                    child: Container(),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade400,
+                        color: const Color.fromARGB(255, 217, 217, 233),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 3,
-                        ),
+                        border: Border.all(color: Colors.black26, width: 3),
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.black38,
-                            blurRadius: 10,
-                            offset: Offset(0, 5),
-                          ),
+                              color: Color.fromARGB(255, 39, 13, 13),
+                              blurRadius: 15,
+                              offset: Offset(10, 15)),
                         ],
                       ),
                       child: const Calculadora(),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                        // alignment: Alignment.center,
-                        // color: Colors.green,
-                        // child: const Text('Terceira coluna'),
-                        ),
+                    child: Container(),
                   ),
                 ],
               ),
             ),
             Expanded(
-              flex: 2,
-              child: Container(
-                alignment: Alignment.center,
-                // color: Colors.red,
-                // child: const Text(
-                // 'Talento Tech-PR',
-              ),
+              flex: 1,
+              child: Container(),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.exposure_plus_1),
       ),
     );
   }
