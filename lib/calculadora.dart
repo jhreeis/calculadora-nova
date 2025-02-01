@@ -104,10 +104,11 @@ class _CalculadoraState extends State<Calculadora> {
         ),
         Expanded(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _botao(_limpar),
               IconButton(onPressed: () => _pressionarBotao('apagar'),
-               icon: Icon(Icons.backspace),
+               icon: const Icon(Icons.backspace),
               )
             ],
           ),
