@@ -50,8 +50,8 @@ class _CalculadoraState extends State<Calculadora> {
     try {
       _resultado = _avaliarExpressao(_expressao).toString();
     } catch (e) {
-      _resultado = 'Erro: dados invalidos';
-      debugPrint('Erro: dados invalidos: $e');
+      _resultado = 'Erro: dados inválidos.';
+      debugPrint('Erro: dados inválidos: $e');
     }
   }
 
@@ -82,12 +82,22 @@ class _CalculadoraState extends State<Calculadora> {
   }
 
   Widget _botao(String valor) {
-    return TextButton(
-      child: Text(
-        valor,
-        style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: 
+      TextButton(
+        onPressed: () => _pressionarBotao(valor),
+        style: TextButton.styleFrom(
+          backgroundColor: Colors.blue,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+          textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        child: Text(
+          valor,
+          style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+        ),
       ),
-      onPressed: () => _pressionarBotao(valor),
     );
   }
 
@@ -143,7 +153,6 @@ class _CalculadoraState extends State<Calculadora> {
               _botao(_ce),
               _botao(_limpar),
               _botao(_media),
-              _botao(_limpar),
               IconButton(
                 onPressed: () => _pressionarBotao('apagar'),
                 icon: const Icon(Icons.backspace),
